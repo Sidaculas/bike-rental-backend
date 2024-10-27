@@ -32,7 +32,7 @@ const getAllRentalFromDb = async () => {
   const result = await Booking.find()
   return result
 }
-const returnBikeFromDb = async (id: string, payload: IBooking) => {
+const returnBikeFromDb = async (id: string) => {
   //checking if the rent is valid and exists in database
   const rent = await Booking.findById(id)
   if (!rent) {
@@ -44,7 +44,7 @@ const returnBikeFromDb = async (id: string, payload: IBooking) => {
   }
 
   // fetching bike details
-  const bike = await Bike.findById(payload.bikeId)
+  const bike = await Bike.findById(rent.bikeId)
   if (!bike) {
     throw new AppError(404, 'Bike not found')
   }
