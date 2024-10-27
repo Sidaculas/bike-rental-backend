@@ -11,7 +11,6 @@ const notFound: RequestHandler = (
     success: false,
     statusCode: httpStatus.NOT_FOUND,
     message: 'Not found',
-    error: '',
   })
 }
 

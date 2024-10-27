@@ -20,25 +20,27 @@ const getAllBike = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Bike added successfully',
+    message: 'Bike retrieved successfully',
     data: result,
   })
 })
 const updateBike = catchAsync(async (req, res) => {
-  const { bikeId } = req.params
-  const result = await bikeServices.updateBikeFromDb(bikeId)
+  const { id } = req.params
+
+  const result = await bikeServices.updateBikeFromDb(id, req.body)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'Bike added successfully',
+    message: 'Bike updated successfully',
     data: result,
   })
 })
 
 const deleteBike = catchAsync(async (req, res) => {
-  const { bikeId } = req.params
-  const bike = await Bike.findById(bikeId)
+  // this could be also implemented in "pre" middleware where it would check if the bike exists or not.
+  const { id } = req.params
+  const bike = await Bike.findById(id)
   if (!bike) {
     sendResponse(res, {
       statusCode: httpStatus.NOT_FOUND,
@@ -47,7 +49,7 @@ const deleteBike = catchAsync(async (req, res) => {
       data: [],
     })
   }
-  const result = await bikeServices.deleteBikeFromDb(bikeId)
+  const result = await bikeServices.deleteBikeFromDb(id)
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

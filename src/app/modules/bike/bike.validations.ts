@@ -39,14 +39,16 @@ const bikeValidationSchema = z.object({
 })
 
 const updateBikeValidationSchema = z.object({
-  name: z.string().optional(),
-  description: z.string().optional(),
-  pricePerHour: z.number().optional(),
-  isAvailable: z.boolean().optional(),
-  cc: z.number().optional(),
-  year: z.string().optional(),
-  model: z.string().optional(),
-  brand: z.string().optional(),
+  body: z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    pricePerHour: z.number().optional(),
+    isAvailable: z.boolean().optional(),
+    cc: z.number().optional(),
+    year: z.number().optional(),
+    model: z.string().optional(),
+    brand: z.string().optional(),
+  }),
 })
 
 export const bikeValidations = {
