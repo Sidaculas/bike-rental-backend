@@ -10,7 +10,7 @@ const bikeSchema = new Schema<IBike>({
     default: true,
   },
   cc: { type: Number, required: true },
-  year: { type: String, required: true },
+  year: { type: Number, required: true },
   model: { type: String, required: true },
   brand: { type: String, required: true },
 })

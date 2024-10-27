@@ -4,7 +4,7 @@ export interface IBike {
   pricePerHour: number
   isAvailable: boolean
   cc: number
-  year: string
+  year: number
   model: string
   brand: string
 }
