@@ -34,6 +34,11 @@ const globalErrorHandler = (
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorSource = simplifiedError?.errorSource
+  } else if (err?.name === 'ValidationError') {
+    const simplifiedError = handleCastError(err)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorSource = simplifiedError?.errorSource
   }
   return res.status(statusCode).json({
     success: false,
