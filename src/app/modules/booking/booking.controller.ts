@@ -32,7 +32,7 @@ const returnBike = catchAsync(async (req, res) => {
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
-    message: 'Rentals retrieved successfully',
+    message: 'Rentals returned successfully',
     data: result,
   })
 })

@@ -10,7 +10,7 @@ router.post(
   validateRequest(bookingValidations.bookingValidationSchema),
   bookingController.createRental,
 )
-router.get('/')
+router.get('/', bookingController.getAllRentals)
 router.put(
   '/:id/return',
   validateRequest(bookingValidations.updateBookingValidationSchema),
