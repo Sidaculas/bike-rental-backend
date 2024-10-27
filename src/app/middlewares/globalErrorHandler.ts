@@ -4,6 +4,7 @@ import { ZodError } from 'zod'
 import handleZodError from '../errors/handleZodError'
 
 import config from '../config'
+import handleCastError from '../errors/handleCastError'
 
 const globalErrorHandler = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,6 +28,11 @@ const globalErrorHandler = (
     const simplifiedError = handleZodError(err)
     statusCode = simplifiedError?.statusCode
     message = simplifiedError?.message
+    errorSource = simplifiedError?.errorSource
+  } else if (err?.name === 'CastError') {
+    const simplifiedError = handleCastError(err)
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
     errorSource = simplifiedError?.errorSource
   }
   return res.status(statusCode).json({
