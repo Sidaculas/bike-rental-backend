@@ -1,9 +1,14 @@
+import { Types } from 'mongoose'
 import AppError from '../../errors/AppError'
 import { Bike } from '../bike/bike.model'
+// import { User } from '../user/user.model'
 import { IBooking } from './booking.interface'
 import { Booking } from './booking.model'
 
-const createRentalIntoDb = async (payload: Partial<IBooking>) => {
+const createRentalIntoDb = async (
+  userId: Types.ObjectId,
+  payload: Partial<IBooking>,
+) => {
   // checking if the bike is available
   const { bikeId } = payload
   const bike = await Bike.findById(bikeId)
@@ -11,9 +16,7 @@ const createRentalIntoDb = async (payload: Partial<IBooking>) => {
   if (!bike || !bike?.isAvailable) {
     throw new AppError(400, 'This bike is not available')
   }
-  //temp user id
-  // temp code testing
-  const userId = '12345'
+
   const cPayload = {
     ...payload,
     userId,
@@ -35,6 +38,7 @@ const getAllRentalFromDb = async () => {
 const returnBikeFromDb = async (id: string) => {
   //checking if the rent is valid and exists in database
   const rent = await Booking.findById(id)
+
   if (!rent) {
     throw new AppError(404, 'Rental Not Found')
   }
@@ -67,6 +71,8 @@ const returnBikeFromDb = async (id: string) => {
   rent.totalCost = totalCost
   rent.isReturned = true
   await rent.save()
+
+  return rent
 }
 
 export const bookingServices = {

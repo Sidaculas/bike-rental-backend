@@ -2,7 +2,10 @@ import { model, Schema } from 'mongoose'
 import { IBooking } from './booking.interface'
 
 const bookingSchema = new Schema<IBooking>({
-  userId: String,
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   bikeId: {
     type: Schema.Types.ObjectId,
     ref: 'Bike',

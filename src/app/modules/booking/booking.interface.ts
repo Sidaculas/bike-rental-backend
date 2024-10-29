@@ -1,7 +1,7 @@
 import { Types } from 'mongoose'
 
 export interface IBooking {
-  userId: string
+  userId: Types.ObjectId
   bikeId: Types.ObjectId
   startTime: Date
   returnTime: Date | null
