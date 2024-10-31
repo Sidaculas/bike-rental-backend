@@ -22,6 +22,7 @@ To run this project locally, you'll need to clone the repository and install the
 - Node.js (v14+ recommended)
 - MongoDB (running locally or hosted)
 - Git
+- Express js
 
 ## Technologies Used
 
