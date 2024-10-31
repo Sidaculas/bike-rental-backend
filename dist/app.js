@@ -18,6 +18,10 @@ app.use((0, cors_1.default)());
 app.use((0, cookie_parser_1.default)());
 // application routes
 app.use('/api', routes_1.default);
+// added so that home page do not return route not found.
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 // global error handler
 app.use(notFound_1.default);
 app.use(globalErrorHandler_1.default);

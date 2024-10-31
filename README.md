@@ -91,18 +91,18 @@ Below is an overview of the available API endpoints. For detailed usage, refer t
 
 ## Auth
 
-- _POST /auth/register_ - Register a new user
-- _POST /auth/login_ - Log in with user credentials
+- _POST api/auth/register_ - Register a new user
+- _POST api/auth/login_ - Log in with user credentials
 
 ## Bikes
 
-- _GET /bikes_ - Get all available bikes
-- _POST /bikes_ - Add a new bike (Admin only)
-- _PUT /bikes/:id_ - Update bike details (Admin only)
-- _DELETE /bikes/:id_ - Delete a bike (Admin only)
+- _GET api/bikes_ - Get all available bikes
+- _POST api/bikes_ - Add a new bike (Admin only)
+- _PUT api/bikes/:id_ - Update bike details (Admin only)
+- _DELETE api/bikes/:id_ - Delete a bike (Admin only)
 
 ## Rentals
 
-- _POST /rentals_ - Rent a bike
-- _PUT /rentals/:id/return_ - Return a rented bike
-- _GET /rentals/user_ - View user rental history
+- _POST api/rentals_ - Rent a bike
+- _PUT api/rentals/:id/return_ - Return a rented bike
+- _GET api/rentals/user_ - View user rental history

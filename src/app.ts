@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import cors from 'cors'
 import router from './app/routes'
 import globalErrorHandler from './app/middlewares/globalErrorHandler'
@@ -17,6 +17,11 @@ app.use(cookieParser())
 
 // application routes
 app.use('/api', router)
+
+// added so that home page do not return route not found.
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello World!')
+})
 
 // global error handler
 
